@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBuy IA | Asesor de ventas</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--pale:#eff6ff;--bg:#f4f7fb;--ink:#182230;--muted:#64748b;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+.app{max-width:1050px;margin:28px auto;padding:0 16px;display:grid;grid-template-columns:270px 1fr;gap:18px}
+aside,.main{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px #1e293b0c}
+aside{padding:24px;height:fit-content} .logo{font-size:25px;font-weight:800;color:var(--navy)}.logo span{color:var(--blue)}
+.tag{color:var(--muted);font-size:13px;margin:7px 0 25px}
+h3{font-size:15px;margin:22px 0 8px;color:var(--navy)}aside p{font-size:13px;line-height:1.5;color:var(--muted);margin:5px 0}
+.pill{display:inline-block;background:var(--pale);color:var(--blue);padding:6px 9px;border-radius:20px;font-size:12px;margin:3px 3px 3px 0}
+.main{overflow:hidden;display:flex;flex-direction:column;min-height:690px}
+header{padding:20px 24px;background:var(--navy);color:white}header h1{font-size:20px;margin:0 0 5px}header p{margin:0;color:#cbd5e1;font-size:13px}
+#chat{padding:22px;flex:1;overflow:auto;max-height:530px}
+.msg{max-width:82%;padding:12px 15px;border-radius:15px;margin:0 0 13px;line-height:1.45;font-size:14px;white-space:pre-wrap}
+.bot{background:#f1f5f9;border-top-left-radius:4px}.user{background:var(--blue);color:white;margin-left:auto;border-top-right-radius:4px}
+.controls{border-top:1px solid var(--line);padding:16px 20px;background:#fff}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button{border:0;border-radius:9px;background:var(--blue);color:white;padding:10px 14px;cursor:pointer;font-weight:600}
+button.secondary{background:var(--pale);color:var(--blue);border:1px solid #bfdbfe}
+button:hover{filter:brightness(.96)}
+.entry{display:flex;gap:8px}.entry input{flex:1;min-width:0;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline-color:var(--blue)}
+.note{font-size:11px;color:var(--muted);margin-top:10px}
+.product{background:white;border:1px solid #bfdbfe;border-radius:12px;padding:12px;margin-top:9px}
+.product strong{color:var(--navy)}.price{font-weight:800;color:var(--blue);margin-top:4px}
+@media(max-width:720px){.app{grid-template-columns:1fr;margin:12px auto}aside{order:2}.main{min-height:650px}#chat{max-height:470px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="logo">📱 SmartBuy <span>IA</span></div>
+  <div class="tag">Asesor virtual de ventas</div>
+  <h3>¿Qué puede hacer?</h3>
+  <p>• Orientar al cliente según su presupuesto.</p>
+  <p>• Recomendar celulares según sus necesidades.</p>
+  <p>• Comparar alternativas.</p>
+  <p>• Crear un anuncio personalizado.</p>
+  <h3>Demostración de marketing</h3>
+  <span class="pill">Atención al cliente</span><span class="pill">Recomendación</span><span class="pill">Publicidad</span>
+  <h3>Cómo probarlo</h3>
+  <p>Escribe, por ejemplo: “Tengo S/ 1500 y quiero un celular para videojuegos”.</p>
+  <p style="margin-top:22px;font-size:11px">Proyecto demostrativo para clase de Marketing.</p>
+</aside>
+<section class="main">
+<header><h1>Asistente de compras SmartBuy</h1><p>Cuéntame qué celular buscas y te ayudaré a elegir.</p></header>
+<div id="chat" aria-live="polite"></div>
+<div class="controls">
+  <div class="quick">
+    <button class="secondary" onclick="quick('Busco un celular económico')">Celular económico</button>
+    <button class="secondary" onclick="quick('Quiero un celular para videojuegos')">Para videojuegos</button>
+    <button class="secondary" onclick="quick('Quiero buena cámara')">Buena cámara</button>
+    <button class="secondary" onclick="quick('Crea un anuncio para el celular recomendado')">Crear anuncio</button>
+  </div>
+  <div class="entry"><input id="input" placeholder="Escribe tu consulta..." onkeydown="if(event.key==='Enter')send()"><button onclick="send()">Enviar</button></div>
+  <div class="note">Nota: esta versión es una demostración interactiva con respuestas programadas; todavía no se conecta a un modelo de IA externo.</div>
+</div>
+</section>
+</div>
+<script>
+const products=[
+{name:"Redmi Note 14",price:999,camera:90,game:72,battery:92,work:82,storage:"256 GB",desc:"Una alternativa económica y equilibrada."},
+{name:"POCO X7",price:1499,camera:78,game:96,battery:86,work:84,storage:"256 GB",desc:"Buen rendimiento para juegos y aplicaciones exigentes."},
+{name:"Samsung Galaxy A56 5G",price:1899,camera:91,game:84,battery:88,work:92,storage:"256 GB",desc:"Equilibrio entre cámara, trabajo y uso diario."},
+{name:"iPhone 16",price:2999,camera:95,game:97,battery:84,work:96,storage:"128 GB",desc:"Alto rendimiento y cámara avanzada."},
+{name:"iPhone 16 Pro",price:4299,camera:99,game:100,battery:90,work:100,storage:"256 GB",desc:"Opción premium para fotografía y rendimiento."}
+];
+const chat=document.getElementById('chat');let lastProduct=null;let budget=null;let need="";
+function add(text,who='bot',html=false){let d=document.createElement('div');d.className='msg '+who;if(html)d.innerHTML=text;else d.textContent=text;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
+function quick(t){document.getElementById('input').value=t;send()}
+function recommend(){
+ let list=products.filter(p=>!budget||p.price<=budget);
+ if(!list.length)list=products.slice(0,1);
+ let key=need.includes('jueg')?'game':need.includes('cámara')||need.includes('camara')?'camera':need.includes('trab')?'work':'battery';
+ list.sort((a,b)=>b[key]-a[key]);return list[0]
+}
+function send(){
+ let input=document.getElementById('input'),t=input.value.trim();if(!t)return;input.value='';add(t,'user');
+ let low=t.toLowerCase();let m=t.match(/(?:s\/\.?|soles)\s*([\d,]+)/i)||t.match(/([\d,]+)\s*(?:soles|s\/)/i);
+ if(m){budget=parseInt(m[1].replace(',',''));if(!Number.isFinite(budget))budget=null}
+ if(low.includes('videojuego')||low.includes('juego'))need='juegos';
+ else if(low.includes('cámara')||low.includes('camara')||low.includes('foto'))need='cámara';
+ else if(low.includes('trabajo')||low.includes('trabajar'))need='trabajo';
+ else if(low.includes('batería')||low.includes('bateria'))need='batería';
+ if(low.includes('anuncio')||low.includes('publicidad')){
+   let p=lastProduct||recommend();lastProduct=p;
+   add(`<strong>Propuesta de anuncio</strong><br>📱 ¡Conoce el ${p.name}!<br>${p.desc}<br><strong>Precio referencial: S/ ${p.price}</strong><br>Elige tecnología que se adapta a ti. ¡Consulta y encuentra tu próximo celular!`,'bot',true);
+ }else if(low.includes('compar')){
+   let a=products[0],b=products[1];add(`Comparación rápida:<br><div class="product"><strong>${a.name}</strong><br>S/ ${a.price} · Cámara ${a.camera}/100 · Juegos ${a.game}/100</div><div class="product"><strong>${b.name}</strong><br>S/ ${b.price} · Cámara ${b.camera}/100 · Juegos ${b.game}/100</div>`,'bot',true);
+ }else if(low.includes('hola')||low.includes('buenas')){
+   add('¡Hola! Soy el asesor virtual de SmartBuy. ¿Cuál es tu presupuesto y para qué usarás principalmente tu celular?');
+ }else{
+   let p=recommend();lastProduct=p;
+   add(`Según lo que me comentas, te recomiendo esta opción:<div class="product"><strong>${p.name}</strong><div class="price">S/ ${p.price}</div>${p.desc}<br>Almacenamiento: ${p.storage}<br>Puntaje de cámara: ${p.camera}/100 · Juegos: ${p.game}/100 · Batería: ${p.battery}/100</div><br>¿Quieres que compare opciones o que prepare un anuncio para este producto?`,'bot',true);
+ }
+}
+add('¡Hola! 👋 Soy SmartBuy IA, tu asesor virtual de celulares. Para ayudarte, dime cuánto deseas invertir y qué es lo más importante para ti: cámara, videojuegos, batería o trabajo.');
+</script>
+</body>
+</html>
