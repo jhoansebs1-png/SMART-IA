@@ -3,197 +3,357 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SmartBuy IA | Tecnología inteligente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBuy IA | Tu tecnología ideal</title>
 <style>
+:root{--navy:#101a32;--blue:#315be8;--cyan:#18b8b0;--bg:#f4f6fb;--text:#1d2942;--muted:#78839a;--white:#fff;--line:#e7eaf1}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f6fa;color:#18213b}
-header{background:#101b3b;color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-.logo{font-size:27px;font-weight:bold}.logo span{color:#48d5d4}
-nav{display:flex;gap:7px;flex-wrap:wrap}
-button{cursor:pointer;border:0;border-radius:9px;padding:11px 15px;font-weight:bold}
-nav button{background:#26365f;color:white}
-nav button:hover,.active{background:#4263eb!important;color:white!important}
-main{max-width:1200px;margin:25px auto;padding:0 18px}
-.hero{background:linear-gradient(110deg,#111d43,#3154a5);color:white;border-radius:20px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.hero h1{font-size:38px;margin:0 0 12px}.hero p{color:#d9e2ff;line-height:1.6;max-width:580px}
-.primary{background:#4263eb;color:white}.secondary{background:#e9edff;color:#3150bb}
-.section{display:none}.section.active{display:block}
-.heading{margin:28px 0 16px}.heading h2{margin:0 0 7px}.muted{color:#788197;font-size:13px;line-height:1.5}
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-input,select{padding:12px;border:1px solid #dce1ec;border-radius:9px;font:inherit}
-.search{flex:1;min-width:200px}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.product{background:white;border-radius:15px;overflow:hidden;border:1px solid #e5e8f0;box-shadow:0 5px 20px #17213b0c}
-.product img{width:100%;height:190px;object-fit:contain;background:#f0f3fa;padding:12px}
-.info{padding:15px}.brand{font-size:11px;color:#8992a6;text-transform:uppercase;font-weight:bold;letter-spacing:1px}
-.info h3{font-size:16px;margin:7px 0}
-.price{font-size:22px;font-weight:bold;color:#3153c5}
-.old{font-size:12px;color:#9ca3b3;text-decoration:line-through;margin-left:6px}
-.tag{display:inline-block;background:#edf1ff;color:#3654b8;border-radius:20px;padding:5px 8px;font-size:10px;margin:5px 3px 8px 0}
-.info button{width:100%;margin-top:7px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
-.stat,.panel{background:white;border-radius:14px;padding:18px;border:1px solid #e5e8f0}
-.stat small{color:#788197}.stat strong{display:block;font-size:23px;color:#3153c5;margin-top:7px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.chatbox{height:310px;overflow:auto;background:#f6f8fc;padding:12px;border-radius:12px;margin:12px 0}
-.msg{padding:10px 13px;border-radius:12px;margin:8px 0;max-width:90%;font-size:13px;line-height:1.5}
-.bot{background:#e5edff}.user{background:#dcf7f1;margin-left:auto}
-.chatrow{display:flex;gap:8px}.chatrow input{flex:1;min-width:0}
-.field{width:100%;margin:7px 0 13px}
-.ad{background:linear-gradient(130deg,#14234e,#4263eb);color:white;padding:22px;border-radius:13px;min-height:170px;white-space:pre-wrap;line-height:1.5}
-.bar{height:9px;background:#edf0f7;border-radius:10px;margin:8px 0 15px;overflow:hidden}
-.bar span{display:block;height:100%;background:linear-gradient(90deg,#4263eb,#30c9c7)}
-footer{text-align:center;color:#8992a6;padding:30px;font-size:12px}
-@media(max-width:850px){.products{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:650px){.products{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding:25px}.hero h1{font-size:29px}}
-@media(max-width:430px){.products{grid-template-columns:1fr}.hero h1{font-size:26px}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+.topbar{background:#0d1730;color:white;padding:10px 5%;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+header{background:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #17213b0c}
+.logo{font-size:25px;font-weight:900;color:var(--navy);white-space:nowrap}
+.logo span{color:var(--blue)}
+.searchbox{display:flex;max-width:460px;flex:1;background:#f2f4f9;border-radius:10px;padding:4px}
+.searchbox input{border:0;background:transparent;padding:10px;width:100%;outline:none}
+.searchbox button{background:var(--blue);color:white;border-radius:8px;padding:10px 15px}
+.nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.nav button{background:white;color:#35415c;padding:10px;border-radius:8px;font-size:13px}
+.nav button:hover{background:#edf1ff;color:var(--blue)}
+.cartbtn{background:var(--navy)!important;color:white!important}
+main{max-width:1300px;margin:auto;padding:25px 22px}
+.hero{border-radius:22px;background:linear-gradient(110deg,#111b37,#294ba4 72%,#315be8);color:white;padding:45px;display:grid;grid-template-columns:1.5fr 1fr;align-items:center;overflow:hidden;position:relative}
+.hero h1{font-size:clamp(32px,4vw,52px);margin:10px 0;line-height:1.1}
+.hero p{max-width:570px;color:#dce5ff;line-height:1.7}
+.hero .eyebrow{color:#6de4d6;font-size:12px;font-weight:bold;letter-spacing:2px}
+.hero img{width:100%;max-height:270px;object-fit:contain;filter:drop-shadow(0 20px 20px #0005)}
+.btn{padding:12px 17px;border-radius:9px;font-weight:700}
+.primary{background:var(--blue);color:white}
+.primary:hover{background:#2347c6}
+.dark{background:var(--navy);color:white}
+.light{background:#edf1ff;color:#3153c5}
+.section{display:none}
+.section.active{display:block}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:30px 0 17px}
+.section-title h2{margin:0 0 5px;font-size:23px}
+.muted{color:var(--muted);font-size:13px;line-height:1.5}
+.categories{display:flex;gap:10px;overflow:auto;padding:5px 0 18px}
+.category{background:white;border:1px solid var(--line);padding:12px 19px;border-radius:30px;white-space:nowrap;color:#43506b}
+.category.active,.category:hover{background:#eaf0ff;color:var(--blue);border-color:#b9c9ff}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.filters select,.filters input{background:white;border:1px solid var(--line);padding:11px;border-radius:9px;color:#36415a}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.product{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.2s;position:relative}
+.product:hover{transform:translateY(-4px);box-shadow:0 12px 28px #1c2b4d12}
+.product-image{height:215px;background:#f0f3f9;position:relative;display:flex;align-items:center;justify-content:center}
+.product-image img{width:100%;height:100%;object-fit:contain;padding:14px}
+.pill{position:absolute;top:12px;left:12px;background:#e6f8f3;color:#13856d;padding:6px 9px;border-radius:20px;font-size:10px;font-weight:bold}
+.heart{position:absolute;right:12px;top:10px;background:white;border-radius:50%;width:33px;height:33px;font-size:17px;color:#8993a6}
+.product-info{padding:15px}
+.brand{font-size:10px;font-weight:bold;color:#8b94a7;letter-spacing:1px;text-transform:uppercase}
+.product-info h3{font-size:16px;margin:6px 0}
+.rating{font-size:12px;color:#e69c24;margin:8px 0}
+.price{font-size:22px;font-weight:900;color:#1d315e}
+.oldprice{font-size:11px;color:#9aa2b1;text-decoration:line-through;margin-left:5px}
+.specs{font-size:11px;color:#7d8799;margin:9px 0 13px}
+.product-actions{display:flex;gap:7px}
+.product-actions button{flex:1;padding:10px 6px;font-size:11px;border-radius:8px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:22px 0}
+.stat{background:white;border:1px solid var(--line);padding:19px;border-radius:13px}
+.stat small{color:var(--muted)}
+.stat strong{display:block;font-size:25px;color:var(--blue);margin-top:8px}
+.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:7px 0 15px;background:white}
+.chat{height:330px;overflow-y:auto;background:#f5f7fc;border-radius:12px;padding:13px;margin:13px 0}
+.message{max-width:90%;padding:11px 13px;border-radius:13px;margin:9px 0;font-size:13px;line-height:1.5}
+.bot{background:#e4ecff}
+.me{background:#dff6ef;margin-left:auto}
+.chat-input{display:flex;gap:8px}
+.chat-input input{min-width:0;flex:1;border:1px solid var(--line);border-radius:9px;padding:12px}
+.ad-preview{background:linear-gradient(135deg,#101a35,#315be8);color:white;border-radius:13px;padding:25px;min-height:220px;white-space:pre-wrap;line-height:1.7}
+.bar{height:9px;border-radius:20px;background:#edf0f7;margin:8px 0 17px;overflow:hidden}
+.bar span{height:100%;display:block;background:linear-gradient(90deg,#315be8,#18b8b0)}
+.modal-bg{display:none;position:fixed;inset:0;background:#081126aa;z-index:50;align-items:center;justify-content:center;padding:15px}
+.modal-bg.show{display:flex}
+.modal{background:white;width:min(700px,100%);max-height:90vh;overflow:auto;border-radius:17px;padding:23px}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close{background:#eef1f6;border-radius:50%;width:34px;height:34px}
+.modal-content{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:15px}
+.modal-content img{width:100%;background:#f1f3f8;border-radius:12px;object-fit:contain}
+.cart-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:13px 0;font-size:13px}
+footer{margin-top:50px;background:#101a32;color:#c4cce0;padding:30px;text-align:center;font-size:12px}
+.toast{position:fixed;bottom:20px;right:20px;background:#101a32;color:white;padding:13px 19px;border-radius:10px;display:none;z-index:100}
+@media(max-width:950px){.products{grid-template-columns:repeat(3,1fr)}header{flex-wrap:wrap}.searchbox{order:3;max-width:none;flex-basis:100%}}
+@media(max-width:650px){.products{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding:27px}.hero img{max-height:150px}.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.nav{justify-content:center}}
+@media(max-width:430px){.products{grid-template-columns:1fr}.product-image{height:240px}.modal-content{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<div class="topbar">
+<span>🚚 Envíos a todo el Perú · Atención digital 24/7</span>
+<span>Prototipo académico · Precios referenciales</span>
+</div>
+
 <header>
-<div><div class="logo">SmartBuy <span>IA</span></div><small>TECNOLOGÍA QUE TE ENTIENDE</small></div>
-<nav>
-<button class="active" onclick="tab('store',this)">Tienda</button>
-<button onclick="tab('assistant',this)">Asistente IA</button>
-<button onclick="tab('marketing',this)">Marketing</button>
-<button onclick="tab('analytics',this)">Analítica</button>
-<button onclick="showCart()">🛒 Bolsa <span id="cartCount">0</span></button>
+<div class="logo">SmartBuy <span>IA.</span></div>
+<div class="searchbox">
+<input id="search" placeholder="Buscar iPhone, Samsung, Xiaomi..." oninput="renderProducts()">
+<button onclick="renderProducts()">⌕</button>
+</div>
+<nav class="nav">
+<button onclick="showSection('store')">Tienda</button>
+<button onclick="showSection('assistant')">Asistente IA</button>
+<button onclick="showSection('marketing')">Marketing</button>
+<button onclick="showSection('analytics')">Analítica</button>
+<button class="cartbtn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
 </nav>
 </header>
 
 <main>
-<div class="hero">
+<section class="hero">
 <div>
-<small style="color:#65e3dc;font-weight:bold;letter-spacing:2px">COMPRA INTELIGENTE</small>
-<h1>Encuentra tu próximo smartphone.</h1>
-<p>Compara tecnología, descubre ofertas y recibe recomendaciones personalizadas según tu presupuesto y estilo de vida.</p>
-<button class="primary" onclick="tab('assistant',document.querySelectorAll('nav button')[1])">Descubrir mi celular →</button>
+<div class="eyebrow">SMART SHOPPING EXPERIENCE</div>
+<h1>La tecnología ideal comienza aquí.</h1>
+<p>Descubre smartphones, compara características y encuentra el equipo perfecto con recomendaciones personalizadas.</p>
+<button class="btn primary" onclick="showSection('store')">Explorar catálogo →</button>
+<button class="btn light" onclick="showSection('assistant')">Hablar con SmartBuy</button>
 </div>
-<div style="font-size:100px">📱</div>
-</div>
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900" alt="Smartphone de referencia">
+</section>
 
 <section id="store" class="section active">
 <div class="stats">
-<div class="stat"><small>Celulares disponibles</small><strong>12</strong></div>
-<div class="stat"><small>Marcas</small><strong>6</strong></div>
-<div class="stat"><small>Asesor digital</small><strong>24/7</strong></div>
-<div class="stat"><small>Experiencia</small><strong>Personalizada</strong></div>
+<div class="stat"><small>Productos en catálogo</small><strong id="productCount">12</strong></div>
+<div class="stat"><small>Marcas disponibles</small><strong>6</strong></div>
+<div class="stat"><small>Atención digital</small><strong>24/7</strong></div>
+<div class="stat"><small>Recomendaciones</small><strong>IA</strong></div>
 </div>
-<div class="heading"><h2>Catálogo de smartphones</h2><p class="muted">Encuentra el equipo ideal para ti.</p></div>
-<div class="tools">
-<input class="search" id="search" placeholder="Buscar celular o marca..." oninput="render()">
-<select id="brandFilter" onchange="render()">
-<option value="">Todas las marcas</option>
-<option>Apple</option><option>Samsung</option><option>Xiaomi</option><option>POCO</option><option>Motorola</option><option>HONOR</option>
-</select>
-<select id="sort" onchange="render()">
-<option value="featured">Destacados</option><option value="low">Menor precio</option><option value="high">Mayor precio</option>
-</select>
+<div class="section-title"><div><h2>Explora nuestros smartphones</h2><div class="muted">Encuentra tecnología para cada necesidad.</div></div></div>
+<div class="categories">
+<button class="category active" onclick="setCategory('Todos',this)">Todos</button>
+<button class="category" onclick="setCategory('Apple',this)">Apple</button>
+<button class="category" onclick="setCategory('Samsung',this)">Samsung</button>
+<button class="category" onclick="setCategory('Xiaomi',this)">Xiaomi</button>
+<button class="category" onclick="setCategory('POCO',this)">POCO</button>
+<button class="category" onclick="setCategory('Motorola',this)">Motorola</button>
+<button class="category" onclick="setCategory('HONOR',this)">HONOR</button>
+</div>
+<div class="filters">
+<select id="sort" onchange="renderProducts()"><option value="featured">Ordenar: destacados</option><option value="low">Precio: menor a mayor</option><option value="high">Precio: mayor a menor</option></select>
+<select id="maxPrice" onchange="renderProducts()"><option value="10000">Todos los precios</option><option value="1000">Hasta S/ 1,000</option><option value="1500">Hasta S/ 1,500</option><option value="2000">Hasta S/ 2,000</option><option value="3000">Hasta S/ 3,000</option></select>
+<select id="usage" onchange="renderProducts()"><option value="">Todas las necesidades</option><option value="gaming">Videojuegos</option><option value="camera">Fotografía</option><option value="battery">Batería</option></select>
 </div>
 <div class="products" id="products"></div>
 </section>
 
 <section id="assistant" class="section">
-<div class="heading"><h2>Asistente inteligente de compras</h2><p class="muted">Escribe lo que necesitas y encuentra una recomendación.</p></div>
+<div class="section-title"><div><h2>SmartBuy Assistant</h2><div class="muted">Tu asesor digital de tecnología.</div></div></div>
 <div class="two">
 <div class="panel">
-<h3>💬 SmartBuy Assistant</h3>
-<div class="chatbox" id="chat"><div class="msg bot">¡Hola! Soy SmartBuy IA. ¿Qué presupuesto tienes? ¿Buscas un celular para fotografía, videojuegos, trabajo o estudio?</div></div>
-<div class="chatrow">
-<input id="message" placeholder="Ej. Busco uno para jugar hasta S/ 1500" onkeydown="if(event.key==='Enter')send()">
-<button class="primary" onclick="send()">Enviar</button>
+<h3>💬 Conversa con nuestro asistente</h3>
+<div class="chat" id="chat">
+<div class="message bot">¡Hola! 👋 Soy SmartBuy Assistant. Cuéntame qué celular buscas, cuánto deseas invertir y qué características son importantes para ti.</div>
 </div>
-<p class="muted">Prueba: “Quiero buena cámara hasta S/ 2000”.</p>
+<div class="chat-input">
+<input id="chatInput" placeholder="Ej. Quiero un celular gamer hasta S/ 1500" onkeydown="if(event.key==='Enter')sendMessage()">
+<button class="btn primary" onclick="sendMessage()">Enviar</button>
 </div>
-<div class="panel"><h3>🎯 Recomendación personalizada</h3><div id="recommendation" class="muted">Tu recomendación aparecerá aquí.</div></div>
+<p class="muted">Ejemplos: buena cámara, batería duradera, videojuegos o trabajo.</p>
+</div>
+<div class="panel">
+<h3>🎯 Tu recomendación</h3>
+<div id="recommendation" class="muted">Aquí aparecerá el smartphone recomendado según tus preferencias.</div>
+</div>
 </div>
 </section>
 
 <section id="marketing" class="section">
-<div class="heading"><h2>Marketing inteligente</h2><p class="muted">Genera anuncios adaptados al perfil de tus clientes.</p></div>
+<div class="section-title"><div><h2>Centro de Marketing IA</h2><div class="muted">Diseña mensajes comerciales según tu público objetivo.</div></div></div>
 <div class="two">
 <div class="panel">
-<h3>Configurar campaña</h3>
-<label class="muted">Producto</label><select class="field" id="adProduct"></select>
-<label class="muted">Público objetivo</label>
-<select class="field" id="audience"><option>Estudiantes</option><option>Gamers</option><option>Creadores de contenido</option><option>Profesionales</option><option>Usuarios que buscan economía</option></select>
-<label class="muted">Red social</label>
-<select class="field" id="network"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>WhatsApp</option></select>
-<button class="primary" onclick="generateAd()">Generar anuncio</button>
+<h3>Configuración de campaña</h3>
+<label class="muted">Selecciona un producto</label>
+<select id="adProduct" class="field"></select>
+<label class="muted">Segmento de clientes</label>
+<select id="audience" class="field">
+<option>Estudiantes universitarios</option><option>Gamers</option><option>Creadores de contenido</option><option>Profesionales</option><option>Usuarios que buscan economía</option>
+</select>
+<label class="muted">Canal digital</label>
+<select id="channel" class="field"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>WhatsApp</option></select>
+<button class="btn primary" onclick="generateCampaign()">✨ Crear campaña</button>
 </div>
-<div class="panel"><h3>Vista previa</h3><div class="ad" id="ad">Tu anuncio aparecerá aquí.</div><button class="secondary" style="margin-top:12px" onclick="copyAd()">Copiar anuncio</button></div>
+<div class="panel">
+<h3>Vista previa del anuncio</h3>
+<div id="adPreview" class="ad-preview">Tu campaña aparecerá aquí.</div>
+<button class="btn light" style="margin-top:12px" onclick="copyCampaign()">Copiar texto</button>
+</div>
 </div>
 </section>
 
 <section id="analytics" class="section">
-<div class="heading"><h2>Panel de analítica comercial</h2><p class="muted">Indicadores de esta sesión demostrativa.</p></div>
+<div class="section-title"><div><h2>Business Intelligence</h2><div class="muted">Indicadores de interacción de la demostración.</div></div></div>
 <div class="stats">
-<div class="stat"><small>Mensajes</small><strong id="messages">0</strong></div>
-<div class="stat"><small>Consultas de productos</small><strong id="views">0</strong></div>
-<div class="stat"><small>Anuncios generados</small><strong id="ads">0</strong></div>
-<div class="stat"><small>Interacciones</small><strong id="total">0</strong></div>
+<div class="stat"><small>Consultas al asistente</small><strong id="metricMessages">0</strong></div>
+<div class="stat"><small>Productos consultados</small><strong id="metricViews">0</strong></div>
+<div class="stat"><small>Campañas generadas</small><strong id="metricAds">0</strong></div>
+<div class="stat"><small>Productos en bolsa</small><strong id="metricCart">0</strong></div>
+</div>
+<div class="two">
+<div class="panel">
+<h3>Intereses de los consumidores</h3>
+<p class="muted">Indicadores ilustrativos para segmentación comercial.</p>
+Fotografía · 85%<div class="bar"><span style="width:85%"></span></div>
+Rendimiento · 90%<div class="bar"><span style="width:90%"></span></div>
+Autonomía · 82%<div class="bar"><span style="width:82%"></span></div>
+Precio · 95%<div class="bar"><span style="width:95%"></span></div>
 </div>
 <div class="panel">
-<h3>Preferencias de clientes (datos ilustrativos)</h3>
-Fotografía · 85%<div class="bar"><span style="width:85%"></span></div>
-Batería · 90%<div class="bar"><span style="width:90%"></span></div>
-Videojuegos · 72%<div class="bar"><span style="width:72%"></span></div>
-Trabajo y estudio · 66%<div class="bar"><span style="width:66%"></span></div>
-<p class="muted">Los porcentajes son ejemplos para explicar la segmentación comercial, no estadísticas reales de ventas.</p>
+<h3>Actividad del prototipo</h3>
+<p>Mensajes: <strong id="activityMessages">0</strong></p>
+<p>Consultas de productos: <strong id="activityViews">0</strong></p>
+<p>Anuncios: <strong id="activityAds">0</strong></p>
+<p>Artículos agregados: <strong id="activityCart">0</strong></p>
+<p class="muted">Los datos se actualizan durante el uso de esta página. No representan ventas reales.</p>
+</div>
 </div>
 </section>
 </main>
-<footer>SmartBuy IA · Prototipo académico de comercio y marketing digital · Precios referenciales.</footer>
+
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<div class="modal-head"><h3 id="modalTitle">Detalle del producto</h3><button class="close" onclick="closeModal()">✕</button></div>
+<div class="modal-content" id="modalContent"></div>
+</div>
+</div>
+
+<footer>
+<strong>SmartBuy IA</strong><br><br>
+Plataforma demostrativa de comercio electrónico y marketing digital.<br>
+© 2026 SmartBuy IA · Proyecto académico.
+</footer>
+<div class="toast" id="toast"></div>
 
 <script>
-const phones=[
-{brand:"Samsung",name:"Galaxy A15 5G",price:799,ram:"6 GB",storage:"128 GB",camera:78,battery:92,gaming:65,work:78,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",badge:"Económico"},
-{brand:"Xiaomi",name:"Redmi Note 14",price:999,ram:"8 GB",storage:"256 GB",camera:90,battery:92,gaming:72,work:82,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",badge:"Más elegido"},
-{brand:"POCO",name:"POCO X7",price:1499,ram:"8 GB",storage:"256 GB",camera:78,battery:86,gaming:96,work:84,image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600",badge:"Gaming"},
-{brand:"Motorola",name:"Edge 50 Fusion",price:1399,ram:"8 GB",storage:"256 GB",camera:87,battery:88,gaming:82,work:85,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",badge:"Diseño premium"},
-{brand:"HONOR",name:"X8b",price:1099,ram:"8 GB",storage:"256 GB",camera:88,battery:80,gaming:70,work:81,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",badge:"Fotografía"},
-{brand:"Samsung",name:"Galaxy A56 5G",price:1899,ram:"8 GB",storage:"256 GB",camera:91,battery:88,gaming:84,work:92,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",badge:"Equilibrado"},
-{brand:"Xiaomi",name:"Redmi Note 14 Pro 5G",price:1599,ram:"8 GB",storage:"256 GB",camera:94,battery:88,gaming:83,work:87,image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600",badge:"Cámara avanzada"},
-{brand:"POCO",name:"POCO F6",price:1999,ram:"12 GB",storage:"512 GB",camera:83,battery:84,gaming:99,work:91,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",badge:"Alto rendimiento"},
-{brand:"Motorola",name:"Edge 50 Pro",price:2299,ram:"12 GB",storage:"512 GB",camera:94,battery:86,gaming:88,work:93,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",badge:"Carga rápida"},
-{brand:"Apple",name:"iPhone 15",price:2799,ram:"6 GB",storage:"128 GB",camera:94,battery:83,gaming:94,work:95,image:"https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=600",badge:"Apple"},
-{brand:"Apple",name:"iPhone 16",price:3299,ram:"8 GB",storage:"128 GB",camera:96,battery:85,gaming:97,work:97,image:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600",badge:"Nueva generación"},
-{brand:"Samsung",name:"Galaxy Z Flip6",price:3999,ram:"12 GB",storage:"256 GB",camera:91,battery:82,gaming:91,work:94,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",badge:"Plegable"}
+const products=[
+{id:1,brand:"Samsung",name:"Galaxy A15 5G",price:799,old:899,ram:"6 GB",storage:"128 GB",camera:78,battery:92,gaming:65,tag:"Gran precio",rating:"4.5",img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700"},
+{id:2,brand:"Xiaomi",name:"Redmi Note 14",price:999,old:1199,ram:"8 GB",storage:"256 GB",camera:90,battery:92,gaming:72,tag:"Más vendido",rating:"4.7",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=700"},
+{id:3,brand:"POCO",name:"POCO X7",price:1499,old:1699,ram:"8 GB",storage:"256 GB",camera:78,battery:86,gaming:96,tag:"Gaming",rating:"4.8",img:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=700"},
+{id:4,brand:"Motorola",name:"Edge 50 Fusion",price:1399,old:1599,ram:"8 GB",storage:"256 GB",camera:87,battery:88,gaming:82,tag:"Diseño premium",rating:"4.6",img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700"},
+{id:5,brand:"HONOR",name:"X8b",price:1099,old:1299,ram:"8 GB",storage:"256 GB",camera:88,battery:80,gaming:70,tag:"Fotografía",rating:"4.5",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=700"},
+{id:6,brand:"Samsung",name:"Galaxy A56 5G",price:1899,old:2099,ram:"8 GB",storage:"256 GB",camera:91,battery:88,gaming:84,tag:"Equilibrado",rating:"4.8",img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700"},
+{id:7,brand:"Xiaomi",name:"Redmi Note 14 Pro 5G",price:1599,old:1799,ram:"8 GB",storage:"256 GB",camera:94,battery:88,gaming:83,tag:"Cámara avanzada",rating:"4.7",img:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=700"},
+{id:8,brand:"POCO",name:"POCO F6",price:1999,old:2199,ram:"12 GB",storage:"512 GB",camera:83,battery:84,gaming:99,tag:"Alto rendimiento",rating:"4.9",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=700"},
+{id:9,brand:"Motorola",name:"Edge 50 Pro",price:2299,old:2499,ram:"12 GB",storage:"512 GB",camera:94,battery:86,gaming:88,tag:"Premium",rating:"4.8",img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700"},
+{id:10,brand:"Apple",name:"iPhone 15",price:2799,old:2999,ram:"6 GB",storage:"128 GB",camera:94,battery:83,gaming:94,tag:"Apple",rating:"4.8",img:"https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=700"},
+{id:11,brand:"Apple",name:"iPhone 16",price:3299,old:3599,ram:"8 GB",storage:"128 GB",camera:96,battery:85,gaming:97,tag:"Nueva generación",rating:"4.9",img:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=700"},
+{id:12,brand:"Samsung",name:"Galaxy Z Flip6",price:3999,old:4299,ram:"12 GB",storage:"256 GB",camera:91,battery:82,gaming:91,tag:"Plegable",rating:"4.8",img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700"}
 ];
-let cart=[],counters={messages:0,views:0,ads:0},lastAd="";
-const money=n=>"S/ "+n.toLocaleString("es-PE");
-function tab(id,btn){document.querySelectorAll(".section").forEach(x=>x.classList.toggle("active",x.id===id));document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active")}
-function render(){
-let q=document.getElementById("search").value.toLowerCase(),brand=document.getElementById("brandFilter").value,sort=document.getElementById("sort").value;
-let list=phones.filter(p=>(p.name+" "+p.brand).toLowerCase().includes(q)&&(!brand||p.brand===brand));
-if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);
-document.getElementById("products").innerHTML=list.map((p,i)=>`<article class="product"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/600x400/e9eef8/3858b8?text=Smartphone'"><div class="info"><div class="brand">${p.brand}</div><h3>${p.name}</h3><span class="tag">${p.badge}</span><div><span class="price">${money(p.price)}</span></div><p class="muted">${p.ram} RAM · ${p.storage}</p><button class="primary" onclick="addCart('${p.name}')">Añadir a bolsa</button><button class="secondary" onclick="details('${p.name}')">Ver características</button></div></article>`).join("");
-document.getElementById("adProduct").innerHTML=phones.map(p=>`<option>${p.name}</option>`).join("");
+
+let category="Todos";
+let cart=JSON.parse(localStorage.getItem("smartbuy_cart")||"[]");
+let metrics={messages:0,views:0,ads:0};
+let campaignText="";
+
+function money(n){return "S/ "+n.toLocaleString("es-PE")}
+function notify(t){let e=document.getElementById("toast");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",2400)}
+function showSection(id){document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===id));window.scrollTo({top:0,behavior:"smooth"});if(id==="analytics")updateMetrics()}
+function setCategory(c,btn){category=c;document.querySelectorAll(".category").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderProducts()}
+function renderProducts(){
+let q=document.getElementById("search").value.toLowerCase();
+let sort=document.getElementById("sort").value;
+let max=Number(document.getElementById("maxPrice").value);
+let usage=document.getElementById("usage").value;
+let list=products.filter(p=>(category==="Todos"||p.brand===category)&&(p.name+" "+p.brand).toLowerCase().includes(q)&&p.price<=max&&(!usage||p[usage]>=85));
+if(sort==="low")list.sort((a,b)=>a.price-b.price);
+if(sort==="high")list.sort((a,b)=>b.price-a.price);
+document.getElementById("productCount").textContent=list.length;
+document.getElementById("products").innerHTML=list.length?list.map(p=>`
+<article class="product">
+<div class="product-image">
+<span class="pill">${p.tag}</span>
+<button class="heart" onclick="favorite(this)">♡</button>
+<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/600x500/e9eef8/315be8?text=Smartphone'">
+</div>
+<div class="product-info">
+<div class="brand">${p.brand}</div>
+<h3>${p.name}</h3>
+<div class="rating">★★★★★ <span style="color:#7d8799">${p.rating} · Valoración referencial</span></div>
+<div><span class="price">${money(p.price)}</span><span class="oldprice">${money(p.old)}</span></div>
+<div class="specs">${p.ram} RAM · ${p.storage} · Cámara ${p.camera}/100</div>
+<div class="product-actions">
+<button class="primary" onclick="addCart(${p.id})">Añadir 🛒</button>
+<button class="light" onclick="details(${p.id})">Detalles</button>
+</div>
+</div></article>`).join(""):"<p>No encontramos productos con esos filtros.</p>";
 }
-function details(name){let p=phones.find(x=>x.name===name);counters.views++;update();alert(`${p.name}\nPrecio: ${money(p.price)}\nRAM: ${p.ram}\nAlmacenamiento: ${p.storage}\nCámara: ${p.camera}/100\nBatería: ${p.battery}/100\nGaming: ${p.gaming}/100`)}
-function addCart(name){cart.push(phones.find(p=>p.name===name));document.getElementById("cartCount").textContent=cart.length;showCart()}
-function showCart(){let total=cart.reduce((s,p)=>s+p.price,0);alert(cart.length?`TU BOLSA\n\n${cart.map(p=>p.name+" - "+money(p.price)).join("\n")}\n\nTOTAL: ${money(total)}\n\nSimulación académica: no procesa pagos.`:"Tu bolsa está vacía.")}
-function addMsg(who,t){let d=document.createElement("div");d.className="msg "+who;d.textContent=t;let c=document.getElementById("chat");c.appendChild(d);c.scrollTop=c.scrollHeight}
-function send(){
-let input=document.getElementById("message"),t=input.value.trim();if(!t)return;input.value="";counters.messages++;addMsg("user",t);
-let low=t.toLowerCase(),m=low.match(/(?:s\/\s*|hasta\s*)(\d{3,4})/),budget=m?Number(m[1]):2500;
-let key=low.includes("jueg")||low.includes("gamer")?"gaming":low.includes("foto")||low.includes("cámara")?"camera":low.includes("bater")?"battery":low.includes("trabaj")||low.includes("estudi")?"work":"balanced";
-let choices=phones.filter(p=>p.price<=budget);if(!choices.length)choices=phones;
-choices.sort((a,b)=>score(b,key)-score(a,key));let p=choices[0];
-document.getElementById("recommendation").innerHTML=`<h3>${p.brand} ${p.name}</h3><div class="price">${money(p.price)}</div><p>${p.ram} RAM · ${p.storage}</p><p class="muted">Indicador según tu prioridad: ${score(p,key)}/100.</p>`;
-addMsg("bot",`Te recomiendo ${p.name} por ${money(p.price)}. Se ajusta a tu presupuesto y destaca en la característica que buscas. ¿Quieres consultar sus características o generar una campaña?`);update()
+function favorite(btn){btn.textContent=btn.textContent==="♡"?"♥":"♡";btn.style.color="#e24e71";notify("Lista de favoritos actualizada")}
+function details(id){
+let p=products.find(x=>x.id===id);metrics.views++;updateMetrics();
+document.getElementById("modalTitle").textContent=p.brand+" "+p.name;
+document.getElementById("modalContent").innerHTML=`
+<img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/600x500/e9eef8/315be8?text=Smartphone'">
+<div><h2>${p.name}</h2><div class="price">${money(p.price)}</div><p class="muted">Características referenciales del catálogo de demostración.</p>
+<p>• Memoria RAM: ${p.ram}</p><p>• Almacenamiento: ${p.storage}</p><p>• Indicador de cámara: ${p.camera}/100</p><p>• Indicador de batería: ${p.battery}/100</p><p>• Rendimiento en juegos: ${p.gaming}/100</p>
+<button class="btn primary" onclick="addCart(${p.id});closeModal()">Añadir a mi bolsa</button></div>`;
+document.getElementById("modal").classList.add("show");
 }
-function score(p,k){return k==="balanced"?Math.round((p.camera+p.gaming+p.battery+p.work)/4):p[k]}
-function generateAd(){
-let p=phones.find(x=>x.name===document.getElementById("adProduct").value),a=document.getElementById("audience").value,n=document.getElementById("network").value;
-let hooks={"Estudiantes":"Estudia, crea y mantente conectado","Gamers":"¡Lleva tus partidas al siguiente nivel!","Creadores de contenido":"Tus ideas merecen una gran cámara","Profesionales":"Tecnología para tu día a día","Usuarios que buscan economía":"Tecnología que se ajusta a tu presupuesto"};
-lastAd=`${hooks[a]} con ${p.name}.\nDescubre sus características y encuentra el equipo que acompaña tu ritmo.\nPrecio referencial: ${money(p.price)}.\nConoce más en SmartBuy IA. #SmartBuyIA #Tecnología`;
-document.getElementById("ad").textContent=n.toUpperCase()+" · CAMPAÑA PARA "+a.toUpperCase()+"\n\n"+lastAd;counters.ads++;update()
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function addCart(id){
+let p=products.find(x=>x.id===id);cart.push(p);localStorage.setItem("smartbuy_cart",JSON.stringify(cart));
+updateCart();notify(p.name+" agregado a tu bolsa");
 }
-function copyAd(){if(!lastAd){alert("Primero genera un anuncio.");return}navigator.clipboard?.writeText(lastAd).then(()=>alert("Anuncio copiado.")).catch(()=>alert(lastAd))}
-function update(){document.getElementById("messages").textContent=counters.messages;document.getElementById("views").textContent=counters.views;document.getElementById("ads").textContent=counters.ads;document.getElementById("total").textContent=counters.messages+counters.views+counters.ads}
-render();update();
+function updateCart(){
+document.getElementById("cartCount").textContent=cart.length;
+document.getElementById("metricCart").textContent=cart.length;
+}
+function openCart(){
+let total=cart.reduce((s,p)=>s+p.price,0);
+let html=cart.length?cart.map((p,i)=>`<div class="cart-row"><span>${p.name}<br><small>${money(p.price)}</small></span><button class="light" onclick="removeCart(${i})">Quitar</button></div>`).join(""):"<p class='muted'>Tu bolsa está vacía.</p>";
+document.getElementById("modalTitle").textContent="Mi bolsa de compras";
+document.getElementById("modalContent").innerHTML=`<div style="grid-column:1/-1">${html}<hr><h3>Total: ${money(total)}</h3><p class="muted">Proceso de compra simulado. No se realizan pagos reales.</p><button class="btn primary" onclick="checkout()">Continuar compra</button></div>`;
+document.getElementById("modal").classList.add("show");
+}
+function removeCart(i){cart.splice(i,1);localStorage.setItem("smartbuy_cart",JSON.stringify(cart));updateCart();openCart()}
+function checkout(){if(!cart.length){notify("Agrega un producto primero");return}cart=[];localStorage.setItem("smartbuy_cart","[]");updateCart();closeModal();notify("¡Compra de demostración completada!")}
+function sendMessage(){
+let input=document.getElementById("chatInput"),t=input.value.trim();if(!t)return;
+input.value="";metrics.messages++;
+addMessage(t,"me");
+let low=t.toLowerCase(),match=low.match(/(?:s\/|soles|hasta)\s*(\d{3,4})/),budget=match?Number(match[1]):3000;
+let key=low.includes("jueg")||low.includes("gamer")?"gaming":low.includes("foto")||low.includes("cámara")?"camera":low.includes("bater")?"battery":"balanced";
+let options=products.filter(p=>p.price<=budget);
+if(!options.length)options=products;
+options.sort((a,b)=>score(b,key)-score(a,key));
+let p=options[0];
+document.getElementById("recommendation").innerHTML=`<h2>${p.brand} ${p.name}</h2><div class="price">${money(p.price)}</div><p>${p.ram} RAM · ${p.storage}</p><p>Indicador de tu prioridad: ${score(p,key)}/100</p><button class="btn primary" onclick="details(${p.id})">Ver producto</button>`;
+addMessage("Te recomiendo el "+p.name+" de "+p.brand+". Su precio referencial es "+money(p.price)+". Destaca en la característica que buscas y se encuentra dentro del presupuesto interpretado. ¿Deseas conocer más?", "bot");
+updateMetrics();
+}
+function score(p,k){return k==="balanced"?Math.round((p.camera+p.battery+p.gaming)/3):p[k]}
+function addMessage(t,type){let e=document.createElement("div");e.className="message "+type;e.textContent=t;let c=document.getElementById("chat");c.appendChild(e);c.scrollTop=c.scrollHeight}
+function generateCampaign(){
+let p=products.find(x=>x.id===Number(document.getElementById("adProduct").value));
+let audience=document.getElementById("audience").value,channel=document.getElementById("channel").value;
+let hook=audience.includes("Gamers")?"¡Lleva tu experiencia gaming al siguiente nivel!":audience.includes("Estudiantes")?"Tecnología para aprender, crear y avanzar.":audience.includes("Creadores")?"Captura cada idea y convierte tus momentos en contenido.":audience.includes("Profesionales")?"Productividad y tecnología para acompañar tus metas.":"Encuentra tecnología que se ajusta a tu presupuesto.";
+campaignText=`${hook}\n\nDescubre el ${p.name} de ${p.brand}.\n\nCaracterísticas destacadas: ${p.ram} RAM y ${p.storage} de almacenamiento.\nPrecio referencial: ${money(p.price)}.\n\nEncuentra tu próximo smartphone en SmartBuy IA.\n\n#SmartBuyIA #Tecnología #Smartphones #${channel}`;
+document.getElementById("adPreview").textContent=channel.toUpperCase()+" · CAMPAÑA DIGITAL\n\n"+campaignText;
+metrics.ads++;updateMetrics();notify("Campaña creada");
+}
+function copyCampaign(){if(!campaignText){notify("Primero crea una campaña");return}navigator.clipboard.writeText(campaignText).then(()=>notify("Texto copiado")).catch(()=>notify("Selecciona y copia el texto"))}
+function updateMetrics(){
+document.getElementById("metricMessages").textContent=metrics.messages;
+document.getElementById("metricViews").textContent=metrics.views;
+document.getElementById("metricAds").textContent=metrics.ads;
+document.getElementById("activityMessages").textContent=metrics.messages;
+document.getElementById("activityViews").textContent=metrics.views;
+document.getElementById("activityAds").textContent=metrics.ads;
+document.getElementById("activityCart").textContent=cart.length;
+}
+document.getElementById("adProduct").innerHTML=products.map(p=>`<option value="${p.id}">${p.brand} ${p.name}</option>`).join("");
+renderProducts();updateCart();updateMetrics();
 </script>
 </body>
 </html>
